@@ -1,12 +1,13 @@
 import {useRef} from "react" 
 
-export default function Searchbar({search, setSearch}) {
+export default function Searchbar({search, setSearch, setLoading}) {
     // referancing to the search bar input:
     const searchInput = useRef()
 
     // creating handle search func to add searched words to the api
     function handleSearchbarChange (e) {
         // asign value of input to variable
+        setLoading(true)
         const data = searchInput.current.value
         if (data === '') return
         setSearch(prev => prev+data)
