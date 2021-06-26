@@ -12,8 +12,6 @@ export default function Searchbar({search, setSearch}) {
         setSearch(prev => prev+data)
         console.log(search)
         searchInput.current.value = null
-
-        
     }
 
    /* const[search, setSearch] = useState('')
@@ -28,13 +26,12 @@ export default function Searchbar({search, setSearch}) {
     ) */
 
     return (
-        <>
+        <div style={{display: "flex"}} >
             <input type='text'
                 placeholder='Type here to search...'
                 ref={searchInput} >
             </input>
             <button onClick={handleSearchbarChange}>&#x1F50D;</button>
-
-        </>
+        </ div>
     )
 }

@@ -17,8 +17,10 @@ export default function Articles(){
     
     // useEffect(() => console.log(articles), [articles])
     return (
+        <>
+        <Searchbar search={search} setSearch={setSearch} />
         <div className="articles">
-            <Searchbar search={search} setSearch={setSearch} />
+            
           <ol>
           {articles.map((item) => (
             <li>  
@@ -29,5 +31,6 @@ export default function Articles(){
             ))}
             </ol>
         </div>
+        </>
     )
 }
