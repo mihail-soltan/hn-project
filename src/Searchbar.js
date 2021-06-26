@@ -1,7 +1,20 @@
-import {useState} from "react" 
+import {useRef} from "react" 
 
 export default function Searchbar({search, setSearch}) {
-    console.log(search)
+    // referancing to the search bar input:
+    const searchInput = useRef()
+
+    // creating handle search func to add searched words to the api
+    function handleSearchbarChange (e) {
+        // asign value of input to variable
+        const data = searchInput.current.value
+        if (data === '') return
+        setSearch(prev => prev+data)
+        console.log(search)
+        searchInput.current.value = null
+
+        
+    }
 
    /* const[search, setSearch] = useState('')
     const searchArticles = (e) =>{
@@ -17,12 +30,10 @@ export default function Searchbar({search, setSearch}) {
     return (
         <>
             <input type='text'
-                placeholder='Type here to search...' >
-
+                placeholder='Type here to search...'
+                ref={searchInput} >
             </input>
-            <button>&#x1F50D;</button>
-            
-        
+            <button onClick={handleSearchbarChange}>&#x1F50D;</button>
 
         </>
     )
