@@ -15,7 +15,13 @@ export default function Articles(){
 //fetching data from API
     useEffect(() => {
         fetch(search)
-          .then((res) => res.json())
+          .then((res) => {
+              if(res.ok) {
+                  return res.json()
+              } else {
+                  throw new Error("Error!")
+              }
+              })
           .then((data) => {
               setLoading(false)
               setArticles(data.hits)})
