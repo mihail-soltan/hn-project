@@ -1,6 +1,6 @@
 import {useRef} from "react" 
 
-export default function Searchbar({search, setSearch, setLoading}) {
+export default function Searchbar({search, setSearch, setLoading, input, setInput}) {
     // referancing to the search bar input:
     const searchInput = useRef()
 
@@ -9,13 +9,13 @@ export default function Searchbar({search, setSearch, setLoading}) {
         // asign value of input to variable
         e.preventDefault()
         
-        const base = "http://hn.algolia.com/api/v1/search?query="
+        
         const data = searchInput.current.value
         if (data === '') {
             return alert('Invalid search...')
         }else {
             setLoading(true)
-            setSearch(base + data)
+            setInput(search + data)
             searchInput.current.value = null
 
 
