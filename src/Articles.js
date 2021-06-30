@@ -9,23 +9,30 @@ export default function Articles(){
     // Will be passed to Search component 
     const [search, setSearch] = useState("http://hn.algolia.com/api/v1/search?query=")
     const [articles, setArticles] = useState([])
+    const [input , setInput] = useState('http://hn.algolia.com/api/v1/search?query=')
 
     // creating loading var for spinners:
     const [loading, setLoading] = useState(false)
 //fetching data from API
     useEffect(() => {
-        fetch(search)
-          .then((res) => res.json())
+        fetch(input)
+          .then((res) => {
+              if(res.ok) {
+                  return res.json()
+              } else {
+                  throw new Error("Error!")
+              }
+              })
           .then((data) => {
               setLoading(false)
               setArticles(data.hits)})
           .catch((err) => console.log(err));
-      }, [search])
+      }, [input])
     
     // useEffect(() => console.log(articles), [articles])
     return (
         <>
-        <Searchbar search={search} setSearch={setSearch} setLoading={setLoading} />
+        <Searchbar search={search} setSearch={setSearch} input={input} setInput={setInput} setLoading={setLoading} />
         {
         loading ?
         <ClipLoader color={"red"} loading={loading}  size={75} />
