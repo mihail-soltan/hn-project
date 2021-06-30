@@ -9,10 +9,10 @@ export default function Searchbar({search, setSearch, setLoading}) {
         // asign value of input to variable
         e.preventDefault()
         setLoading(true)
+        const base = "http://hn.algolia.com/api/v1/search?query="
         const data = searchInput.current.value
         if (data === '') return
-        setSearch(prev => prev+data)
-        console.log(search)
+        setSearch(base + data)
         searchInput.current.value = null
     }
 
