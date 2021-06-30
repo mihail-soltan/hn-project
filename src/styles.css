@@ -19,3 +19,14 @@
     align-items: flex-start;
     margin: 1rem;
 }
+input {
+    width: 300px;
+    padding: 10px 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
+button {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}

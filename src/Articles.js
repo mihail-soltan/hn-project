@@ -28,7 +28,7 @@ export default function Articles(){
         <Searchbar search={search} setSearch={setSearch} setLoading={setLoading} />
         {
         loading ?
-        <ClipLoader color={"red"} loading={loading}  size={150} />
+        <ClipLoader color={"red"} loading={loading}  size={75} />
         :
         <>
         <div className="articles">
