@@ -1,18 +1,27 @@
 import {useRef} from "react" 
 
-export default function Searchbar({search, setSearch, setLoading}) {
+export default function Searchbar({search, setSearch, setLoading, input, setInput}) {
     // referancing to the search bar input:
     const searchInput = useRef()
 
     // creating handle search func to add searched words to the api
     function handleSearchbarChange (e) {
         // asign value of input to variable
-        setLoading(true)
+        e.preventDefault()
+        
+        
         const data = searchInput.current.value
-        if (data === '') return
-        setSearch(prev => prev+data)
-        console.log(search)
-        searchInput.current.value = null
+        if (data === '') {
+            return alert('Invalid search...')
+        }else {
+            setLoading(true)
+            setInput(search + data)
+            searchInput.current.value = null
+
+
+        }
+
+        
     }
 
    /* const[search, setSearch] = useState('')
@@ -27,6 +36,7 @@ export default function Searchbar({search, setSearch, setLoading}) {
     ) */
 
     return (
+        <form onSubmit={handleSearchbarChange}>
         <div style={{display: "flex"}} >
             <input type='text'
                 placeholder='Type here to search...'
@@ -34,5 +44,6 @@ export default function Searchbar({search, setSearch, setLoading}) {
             </input>
             <button onClick={handleSearchbarChange}>&#x1F50D;</button>
         </ div>
+        </form>
     )
 }
