@@ -18,7 +18,7 @@ export default function Searchbar({search, setSearch, setLoading, input, setInpu
             setInput(search + data)
             searchInput.current.value = null
             console.log(articles.length)
-
+            
         }
 
         

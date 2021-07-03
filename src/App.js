@@ -1,6 +1,6 @@
 import {useState} from "react" 
 import Articles from "./Articles"
-
+import Pagination from "./Pagination"
 // importing themprovider and globalstyle for theme changing:
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 
@@ -10,9 +10,9 @@ body {
   color: ${props => props.theme.mode === 'dark' ? '#EEE' : '#111'};
 }
 `
-
 function App() {
   const [theme, setTheme] = useState({mode: 'light'})
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -20,7 +20,7 @@ function App() {
       <GlobalStyle setTheme={setTheme}/>
       <div className="App">
 
-        <Articles  />
+        <Articles />
         <button onClick={e=>setTheme(theme.mode === 'dark' ? {mode:'light'} : {mode:'dark'})}>
           {theme.mode === 'dark' ? 'Light Them' : 'Dark Theme'}</button>
       </div>
