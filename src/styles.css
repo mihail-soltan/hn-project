@@ -53,8 +53,20 @@ a:hover {
     height: 400px;
     width: 500px;
     /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    margin: 1rem;
+    align-content: center;
+    text-align: center;
+}
+
+.item  * {
+    margin: 20px;
 }
 
 .a-main {
     color: #333;
 }
+
