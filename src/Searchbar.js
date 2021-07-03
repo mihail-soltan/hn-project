@@ -1,6 +1,6 @@
 import {useRef} from "react" 
 
-export default function Searchbar({search, setSearch, setLoading, input, setInput}) {
+export default function Searchbar({search, setSearch, setLoading, input, setInput, articles}) {
     // referancing to the search bar input:
     const searchInput = useRef()
 
@@ -17,7 +17,7 @@ export default function Searchbar({search, setSearch, setLoading, input, setInpu
             setLoading(true)
             setInput(search + data)
             searchInput.current.value = null
-
+            console.log(articles.length)
 
         }
 

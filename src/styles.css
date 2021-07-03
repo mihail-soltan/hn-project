@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Benne&display=swap');
 * {
     padding: 0;
     margin: 0;
@@ -11,7 +12,12 @@
     align-items: center;
     height: 100vh;    
 }
-
+.title {
+    display: flex;
+    flex-direction: row;
+    font-size: 64px;
+    font-family: 'Benne', serif;
+}
 .articles {
     display: flex;
     flex-direction: column;
@@ -29,4 +35,16 @@ button {
     padding: 10px;
     margin: 10px;
     border-radius: 10px;
+}
+li {
+    font-size: 16px;
+}
+a {
+    color:#70BD42;
+}
+a:hover {
+    color: red;
+}
+a:visited {
+    color:#8F42BD;
 }
