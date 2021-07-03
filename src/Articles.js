@@ -2,9 +2,11 @@ import {useState, useEffect} from "react"
 import Searchbar from "./Searchbar";
 // using spinners from react-spinners: https://www.npmjs.com/package/react-spinners
 import ClipLoader from "react-spinners/ClipLoader";
-
+import Pagination from "./Pagination"
 
 export default function Articles(){
+
+
     // creating variable to add the search words to the api
     // Will be passed to Search component 
     const [search, setSearch] = useState("http://hn.algolia.com/api/v1/search?query=")
@@ -22,6 +24,9 @@ export default function Articles(){
 
     // creating loading var for spinners:
     const [loading, setLoading] = useState(false)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [articlesPerPage] = useState(10)
+
 //fetching data from API
     useEffect(() => {
         fetch(input)
@@ -37,8 +42,17 @@ export default function Articles(){
               setArticles(data.hits)})
           .catch((err) => console.log(err));
       }, [input])
-    
     // useEffect(() => console.log(articles), [articles])
+
+    // Get current posts
+    const indexOfLastArticle = currentPage * articlesPerPage
+    const indexOfFirstArticle = indexOfLastArticle - articlesPerPage
+    const currentArticles = articles.slice(indexOfFirstArticle, indexOfLastArticle)
+
+    // change page 
+    const paginate = (pageNumber) => {
+      setCurrentPage(pageNumber)
+    }
     return (
         <>
         <div className="title">
@@ -62,16 +76,19 @@ export default function Articles(){
         <>
         <div className="articles">
             
-            <ol>
-            {articles.map((item) => 
+            <ol >
+            {currentArticles.map((item) => 
                 
-              <li key = {uuidv4()}>  
+              <li className="stories" key = {uuidv4()}>  
                 <a href ={item.url} target="_blank">
                       {item.title}
                   </a>
                   </li>
               )}
               </ol>
+              <div className = "pagination">
+              <Pagination articlesPerPage={articlesPerPage} totalArticles={articles.length} paginate={paginate}/>
+              </div>
           </div>
         </>
         
