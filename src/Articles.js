@@ -65,10 +65,10 @@ export default function Articles(){
             <ol>
             {articles.map((item) => 
                 
-              <li key = {uuidv4()}>  
-                <a href ={item.url} target="_blank">
-                      {item.title}
-                  </a>
+              <li key = {uuidv4()}>{(item.title) === null ? 'No title found' : item.title}{' '}
+                {(item.url) === null ? '' : <a href={item.url} target="_blank">{item.url}</a>}
+
+                
                   </li>
               )}
               </ol>
