@@ -2,6 +2,12 @@ import {useState, useEffect} from "react"
 import Searchbar from "./Searchbar";
 // using spinners from react-spinners: https://www.npmjs.com/package/react-spinners
 import ClipLoader from "react-spinners/ClipLoader";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  // Link
+} from "react-router-dom";
 
 
 export default function Articles(){
@@ -40,7 +46,7 @@ export default function Articles(){
     
     // useEffect(() => console.log(articles), [articles])
     return (
-        <>
+        <Router>
         <div className="title">
         <span style={{color: "#D92726"}}>H</span>
         <span style={{color: "#7ED926"}}>a</span>
@@ -59,20 +65,29 @@ export default function Articles(){
         loading ?
         <ClipLoader color={"red"} loading={loading}  size={75} />
         :
-        <>
+        < >
+        <Switch>
+          <Route exact path='/'>
         <div className="articles">
             
             <ol>
             {articles.map((item) => 
                 
               <li key = {uuidv4()}>{(item.title) === null ? 'No title found' : item.title}{' '}
-                {(item.url) === null ? '' : <a href={item.url} target="_blank">{item.url}</a>}
+                {(item.url) === null ? '' : <a href={item.url} target="_blank">link</a>}
 
                 
                   </li>
               )}
               </ol>
           </div>
+          </Route>
+          <Route exact path='/item'>
+            <div className='item'>
+              <h1>Item</h1>
+            </div>
+          </Route>
+          </Switch>
         </>
         
     
@@ -80,6 +95,6 @@ export default function Articles(){
         
         
         
-        </>
+        </Router>
     )
 }

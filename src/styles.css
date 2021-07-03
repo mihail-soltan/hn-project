@@ -45,6 +45,12 @@ a {
 a:hover {
     color: red;
 }
-a:visited {
+/* a:visited {
     color:#8F42BD;
+} */
+
+.item {
+    height: 400px;
+    width: 500px;
+    /* background-color: red; */
 }
