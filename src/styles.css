@@ -60,15 +60,19 @@ a:active{
     flex-direction: row;
     list-style: none;
     margin: 40px 10px 10px 10px;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 .pages {
-    /* margin: 10px 10px 10px 10px; */
+    margin: 0px 20px 0px 20px;
+    color: #70BD42;
     float: left;
-    padding: 20px;
+    /* padding: 20px; */
     text-decoration: none;
+    cursor: pointer;
 }
+
+
 .pages:active {
     color: red;
 }
@@ -79,4 +83,7 @@ a:active{
     .stories{
         margin: 3px;
     }
+}
+.pages:hover {
+    color: red;
 }
