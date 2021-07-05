@@ -9,7 +9,7 @@ export default function Articles(){
 
     // creating variable to add the search words to the api
     // Will be passed to Search component 
-    const [search, setSearch] = useState("http://hn.algolia.com/api/v1/search?query=")
+    const [search, setSearch] = useState("https://hn.algolia.com/api/v1/search?query=")
     const [articles, setArticles] = useState([])
     const [input , setInput] = useState('https://hn.algolia.com/api/v1/search?query=&hitsPerPage=50')
     // uuid for unique <li> keys
