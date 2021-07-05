@@ -52,12 +52,25 @@ a:hover {
 /* a:visited { */
     /* color:#8F42BD; */
 /* } */
-
+a:active{
+    color: red;
+}
 .pagination {
     display: flex;
     flex-direction: row;
     list-style: none;
-    margin-top: 40px;
+    margin: 40px 10px 10px 10px;
+    justify-content: center;
+    align-items: center;
+}
+.pages {
+    /* margin: 10px 10px 10px 10px; */
+    float: left;
+    padding: 20px;
+    text-decoration: none;
+}
+.pages:active {
+    color: red;
 }
 @media(max-width: 450px){
     .pagination{

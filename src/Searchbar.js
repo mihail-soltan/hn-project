@@ -15,7 +15,7 @@ export default function Searchbar({search, setSearch, setLoading, input, setInpu
             return alert('Invalid search...')
         }else {
             setLoading(true)
-            setInput(search + data)
+            setInput(search + data + "&hitsPerPage=50")
             searchInput.current.value = null
             console.log(articles.length)
             

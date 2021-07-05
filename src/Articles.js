@@ -11,7 +11,7 @@ export default function Articles(){
     // Will be passed to Search component 
     const [search, setSearch] = useState("http://hn.algolia.com/api/v1/search?query=")
     const [articles, setArticles] = useState([])
-    const [input , setInput] = useState('http://hn.algolia.com/api/v1/search?query=')
+    const [input , setInput] = useState('http://hn.algolia.com/api/v1/search?query=&hitsPerPage=50')
     // uuid for unique <li> keys
     function uuidv4() {
         return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
@@ -29,6 +29,7 @@ export default function Articles(){
 
 //fetching data from API
     useEffect(() => {
+      setLoading(true)
         fetch(input)
           .then((res) => {
               if(res.ok) {
@@ -41,6 +42,18 @@ export default function Articles(){
               setLoading(false)
               setArticles(data.hits)})
           .catch((err) => console.log(err));
+
+          // updates the results automatically every 5 minutes
+          const updateArticleList = setInterval(() =>{
+            fetch(input)
+            console.log(`${input}, fetching`)
+          }, 300000)
+
+          // stops fetching when updating the query 
+          return () => {clearInterval(updateArticleList)
+            console.log('stopped fetching')
+          }
+          
       }, [input])
     // useEffect(() => console.log(articles), [articles])
 
@@ -77,18 +90,17 @@ export default function Articles(){
         <div className="articles">
             
             <ol >
-            {currentArticles.map((item) => 
-                
+            {articles.length > 0 ? currentArticles.map((item) => 
               <li className="stories" key = {uuidv4()}>  
                 <a href ={item.url} target="_blank">
-                      {item.title}
+                  {item.title ? item.title : "deleted" } 
                   </a>
                   </li>
-              )}
+              ) : <h1>Oops, no results found</h1> }
               </ol>
-              <div className = "pagination">
+          </div>
+          <div className = "pagination">
               <Pagination articlesPerPage={articlesPerPage} totalArticles={articles.length} paginate={paginate}/>
-              </div>
           </div>
         </>
         

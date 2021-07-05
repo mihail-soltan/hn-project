@@ -1,6 +1,5 @@
 import {useState} from "react" 
 import Articles from "./Articles"
-import Pagination from "./Pagination"
 // importing themprovider and globalstyle for theme changing:
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 
