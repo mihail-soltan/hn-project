@@ -11,7 +11,7 @@ export default function Articles(){
     // Will be passed to Search component 
     const [search, setSearch] = useState("http://hn.algolia.com/api/v1/search?query=")
     const [articles, setArticles] = useState([])
-    const [input , setInput] = useState('http://hn.algolia.com/api/v1/search?query=&hitsPerPage=50')
+    const [input , setInput] = useState('https://hn.algolia.com/api/v1/search?query=&hitsPerPage=50')
     // uuid for unique <li> keys
     function uuidv4() {
         return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
