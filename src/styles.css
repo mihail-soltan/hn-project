@@ -49,9 +49,7 @@ a {
 a:hover {
     color: red;
 }
-/* a:visited { */
-    /* color:#8F42BD; */
-/* } */
+
 a:active{
     color: red;
 }
@@ -87,3 +85,26 @@ a:active{
 .pages:hover {
     color: red;
 }
+
+
+.item {
+    height: 400px;
+    width: 500px;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    margin: 1rem;
+    align-content: center;
+    text-align: center;
+}
+
+.item  * {
+    margin: 20px;
+}
+
+.a-main {
+    color: #333;
+}
+
